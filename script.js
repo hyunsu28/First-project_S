@@ -26,9 +26,15 @@ function createMovieCard(movie) {
   movieOverview.classList.add('card-text');
   movieOverview.textContent = movie.overview;
 
+  const movieAverage = document.createElement('div');
+  movieAverage.classList.add('card-average');
+  movieAverage.textContent = "평점 - " + movie.vote_average;
+
   movieCard.appendChild(movieImage);
   movieCard.appendChild(movieTitle);
   movieCard.appendChild(movieOverview);
+  movieCard.appendChild(movieAverage)
+
 
   // 영화 포스터 클릭 시 팝업으로 id 보여주기
   movieImage.addEventListener('click', () => {
@@ -75,19 +81,6 @@ searchButton.addEventListener('click', () => {
     fetchMovies(searchUrl);
   } else {
     const initialUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
-    fetchMovies(initialUrl);
+    fetchMovies(initialUrl); 
   }
 });
-
-
-    // 검색어가 비어있을 경우 모든 영화를 보여줌
-    allMovies.forEach(movie => {
-      const movieCard = createMovieCard(movie);
-      moviesContainer.appendChild(movieCard);
-    });
-
-// // Initial fetch when the page loads
-// window.addEventListener('DOMContentLoaded', () => {
-//   const initialUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
-//   fetchMovies(initialUrl);
-// });
