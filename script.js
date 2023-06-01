@@ -8,7 +8,7 @@ const options = {
 
 const moviesContainer = document.getElementById('movies');
 
-// 영화 정보 카드 생성 함수
+// 영화 정보 카드를 생성하는 함수
 function createMovieCard(movie) {
   const movieCard = document.createElement('div');
   movieCard.classList.add('card');
@@ -64,8 +64,10 @@ function fetchMovies(url) {
   fetch(url, options)
     .then(response => response.json())
     .then(response => {
-      const movies = response.results;
-      moviesContainer.innerHTML = ''; // 기존의 영화 카드 제거
+      const movies = response.results; 
+
+      // 기존의 영화 카드 제거
+      moviesContainer.innerHTML = ''; 
       movies.forEach(movie => {
         const movieCard = createMovieCard(movie);
         moviesContainer.appendChild(movieCard);
